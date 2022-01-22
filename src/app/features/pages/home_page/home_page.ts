@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 /* Home page component */
 @Component({
   selector: 'home-page',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home_page.scss']
 })
 export class HomePage implements OnInit {
+
+  
   title = 'Mk4';
   constructor() {
 

@@ -25,7 +25,6 @@ import { MapsModule } from '@syncfusion/ej2-angular-maps';
     MatInputModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MapsModule,
   ],
   exports: [HomePage],
   providers: [],
