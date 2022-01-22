@@ -4,6 +4,7 @@ import { AppComponent } from './app_component';
 import { AppRoutingModule } from 'src/app/features/routing/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HomePageModule } from '../features/pages/home_page/home_page_module';
 
 
 
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HomePageModule,
   ],
   exports: [AppComponent],
   providers: [],
