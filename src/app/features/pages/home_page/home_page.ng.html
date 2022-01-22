@@ -116,7 +116,12 @@
         <mat-divider [vertical]="true"></mat-divider>
     </div>
     <div class="map">
-        <div id="map" style="width:1450px; height:100%">
+        <div id="map">
+        </div>
+        <div id="confirm" [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}">
+            <button mat-raised-button color="primary" (click)="onConfirm()" *ngIf="!current.confirm">Confirm</button>
+            <button mat-raised-button color="primary" (click)="onReset()" *ngIf="current.confirm && current.coordinates.length > 0">Reset</button>
+            <button mat-raised-button color="primary" (click)="onCancel()" *ngIf="current.confirm">Cancel</button>
         </div>
     </div>
 </div>

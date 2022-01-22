@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'forms-page',
   templateUrl: './forms_page.ng.html',
-  styleUrls: ['./forms_page.scss']
+  styleUrls: ['./forms_page.scss'],
 })
 export class FormsPage implements OnInit, OnDestroy {
   title = 'Mk4';
@@ -25,8 +25,11 @@ export class FormsPage implements OnInit, OnDestroy {
   ];
   subscriptions: Subscription = new Subscription();
 
-  constructor(private formsService: FormService, private route: ActivatedRoute,
-    private router: Router  ) {}
+  constructor(
+    private formsService: FormService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Form>(this.tableData);
@@ -36,7 +39,7 @@ export class FormsPage implements OnInit, OnDestroy {
   updateList(): void {
     this.subscriptions.add(
       this.formsService.getAll().subscribe((result: Form[]) => {
-        console.log("Retrieved forms from API: ", result);
+        console.log('Retrieved forms from API: ', result);
         this.tableData = result;
         this.dataSource.data = this.tableData;
       })
@@ -44,16 +47,20 @@ export class FormsPage implements OnInit, OnDestroy {
   }
 
   addNewItem() {
-    console.log ("Add new item!");
     this.router.navigate(['../']);
   }
 
   deleteItem(item: Form) {
-    console.log ("Deleted item: " + item.last + item.first + item.middle);
+    this.formsService
+      .deleteById(item.id)
+      .subscribe((data) => this.updateList());
   }
 
   editItem(item: Form) {
-    this.router.navigate(['../'], { relativeTo: this.route, queryParams: {id: item.id} });
+    this.router.navigate(['../'], {
+      relativeTo: this.route,
+      queryParams: { id: item.id },
+    });
   }
 
   ngOnDestroy(): void {

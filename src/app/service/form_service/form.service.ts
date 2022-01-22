@@ -19,7 +19,7 @@ export class FormService {
     return this.http.get<Form>(this.baseUrl + '/forms/' + id + '/');
   }
 
-  deleteById (id: number): void {
-    this.http.delete(this.baseUrl + '/forms/' + id + '/');
+  deleteById (id: number): Observable<{}> {
+    return this.http.delete<{}>(this.baseUrl + '/forms/' + id + '/');
   }
 }

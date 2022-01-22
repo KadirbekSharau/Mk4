@@ -17,6 +17,35 @@
     }
 }
 
+.map {
+    width: calc(100% - 400px);
+    position: relative;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#confirm {
+    width: 100%;
+    height: 100px;
+    background: white;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // transform: translateY(-100%);
+    transition: transform 0.7s;
+    button { 
+        margin: 0 25px;
+    }
+}
+
+
 .data {
     display: flex;
     flex-direction: column;
