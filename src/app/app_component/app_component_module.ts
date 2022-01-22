@@ -5,6 +5,7 @@ import { AppRoutingModule } from 'src/app/features/routing/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageModule } from '../features/pages/home_page/home_page_module';
+import { MapsModule } from '@syncfusion/ej2-angular-maps';
 
 
 
@@ -19,6 +20,7 @@ import { HomePageModule } from '../features/pages/home_page/home_page_module';
     HttpClientModule,
     BrowserAnimationsModule,
     HomePageModule,
+    MapsModule
   ],
   exports: [AppComponent],
   providers: [],
