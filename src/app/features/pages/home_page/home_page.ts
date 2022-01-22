@@ -73,11 +73,9 @@ export class HomePage implements OnInit {
     if (this.id) {
       this.getDetail(this.id);
     }
-
-    
   }
 
-  getPointFromQueryParams(){
+  getPointFromQueryParams() {
     try {
       const point = JSON.parse(
         this.route.snapshot.queryParamMap.get('point') || '[]'
@@ -133,6 +131,7 @@ export class HomePage implements OnInit {
 
   onConfirm() {
     this.current.confirm = true;
+    this.current.marker?.openPopup();
   }
 
   onReset() {
@@ -237,7 +236,7 @@ export class HomePage implements OnInit {
         zoom: this.zoom,
       });
       this.map.on('click', (res: any) => this.handleGetLocation(res.latlng));
-      this.getPointFromQueryParams()
+      this.getPointFromQueryParams();
     });
   }
 
