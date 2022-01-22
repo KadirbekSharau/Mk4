@@ -1,0 +1,86 @@
+<header></header>
+
+<mat-toolbar class="page-header" role="heading">
+    <button mat-flat-button color="custom-blue" class="add-button" (click)="addNewItem()">
+        <mat-icon inline=true class="add-icon">add</mat-icon>
+        Создать анкету
+    </button>
+</mat-toolbar>
+
+<mat-card class="table-wrapper">
+    <mat-card-title class="table-wrapper__header">
+        <p class="table-wrapper__title">Анкеты</p>
+    </mat-card-title>
+
+    <mat-card-content class="table__content">
+        <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+            <!-- No Column -->
+            <ng-container matColumnDef="no">
+                <th mat-header-cell *matHeaderCellDef>№</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    {{ i + 1 }}
+                </td>
+            </ng-container>
+
+            <!-- Fullname Column -->
+            <ng-container matColumnDef="fullname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Ф.И.О.
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.last + ' ' + element.first + ' ' + (element.middle ? element.middle : '') }}
+                </td>
+            </ng-container>
+
+            <!-- Cadastral Number Column -->
+            <ng-container matColumnDef="cadastral_number">
+                <th fxHide.lt-md mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Кадастровый номер
+                </th>
+                <td fxHide.lt-md mat-cell *matCellDef="let element">
+                    {{ element.house.cad }}
+                </td>
+            </ng-container>
+
+            <!-- Area Column -->
+            <ng-container matColumnDef="area">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Площадь в кв.м.
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.house.area }}
+                </td>
+            </ng-container>
+
+            <!-- Address Column -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Адрес
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.address.city + ', ' + element.address.street + ' ' + element.address.house +  (element.address.apartament ? ', ' + element.address.apartament : '') }}
+                </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                    <button fxHide.xs mat-flat-button style="color:#3f51b5;" matTooltip="Удалить"
+                        (click)="deleteItem(row)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <!-- <app-row-actions-menu fxHide fxShow.lt-sm (editItem)="detailItem(row)"></app-row-actions-menu> -->
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+
+
+    <mat-toolbar class="custom-toolbar" role="heading">
+        <h4>Всего анкет: {{ dataSource.data.length }}</h4>
+    </mat-toolbar>
+</mat-card>
