@@ -73,6 +73,19 @@ export class HomePage implements OnInit {
     if (this.id) {
       this.getDetail(this.id);
     }
+
+    
+  }
+
+  getPointFromQueryParams(){
+    try {
+      const point = JSON.parse(
+        this.route.snapshot.queryParamMap.get('point') || '[]'
+      );
+      if (!Number.isNaN(point[0]) && !Number.isNaN(point[1])) {
+        this.handleGetLocation({ lat: point[0], lng: point[1] });
+      }
+    } catch (err) {}
   }
 
   async initGoogle() {
@@ -132,6 +145,13 @@ export class HomePage implements OnInit {
 
   onCancel() {
     this.onReset();
+    this.form.patchValue({
+      area: null,
+      city: null,
+      street: null,
+      house: null,
+      apartment: null,
+    });
     this.current.marker.removeFrom(this.map);
     this.current.marker = null;
     this.current.confirm = false;
@@ -196,14 +216,15 @@ export class HomePage implements OnInit {
   updateFormByAddress(point: number[]) {
     if (this.current?.address && this.current?.address?.kind === 'house') {
       this.form.patchValue({
-        city: this.current.address.components.find(
-          (el) => el.kind == 'locality'
-        )!.name,
-        street: this.current.address.components.find(
-          (el) => el.kind == 'street'
-        )!.name,
-        house: this.current.address.components.find((el) => el.kind == 'house')!
-          .name,
+        city:
+          this.current.address.components.find((el) => el.kind == 'locality')
+            ?.name || null,
+        street:
+          this.current.address.components.find((el) => el.kind == 'street')
+            ?.name || null,
+        house:
+          this.current.address.components.find((el) => el.kind == 'house')
+            ?.name || null,
         point: { lat: point[0], lng: point[1] },
       });
     }
@@ -216,6 +237,7 @@ export class HomePage implements OnInit {
         zoom: this.zoom,
       });
       this.map.on('click', (res: any) => this.handleGetLocation(res.latlng));
+      this.getPointFromQueryParams()
     });
   }
 
