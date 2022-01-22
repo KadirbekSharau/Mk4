@@ -1,13 +1,13 @@
 <div>
-    <mat-toolbar>
+    <mat-toolbar style="background-color: #3f51b5;">
         <span class="title">
-        Mk4
+            Mk4
         </span>
 
         <div class="buttons">
             <div>
-                <button class="forms" mat-stroked-button><a routerLink="forms">Анкеты</a></button>
-                <button mat-raised-button><a routerLink="login">Вход</a></button>
+                <button mat-button [routerLink]="['/']" style="font-size: medium;">Главная</button>
+                <button mat-button [routerLink]="['/forms']" style="font-size: medium;">Анкеты</button>
             </div>
         </div>
     </mat-toolbar>
