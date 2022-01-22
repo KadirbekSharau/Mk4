@@ -3,56 +3,93 @@
     <div class="contents">
         <div class="forms">
             <div>
-                <a>Паспортные данные</a>
-                <div class="data">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                <form class="authorization-form"
+                      [formGroup]="form"
+                      (ngSubmit) = "onSubmit()">
+                    <a>Паспортные данные</a>
+                    <div class="data">
+                        <mat-form-field appearance="fill">
+                            <mat-label>surname</mat-label>
+                            <input type="text" 
+                                matInput  
+                                placeholder="example@example.com"
+                                id="surname"
+                                formControlName="surname"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>name</mat-label>
+                            <input type="text" 
+                                matInput  
+                                placeholder="example@example.com"
+                                id="name"
+                                formControlName="name"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>fathername</mat-label>
+                            <input type="text" 
+                                matInput  
+                                placeholder="example@example.com"
+                                id="fathername"
+                                formControlName="fathername"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>id</mat-label>
+                            <input type="number" 
+                                matInput  
+                                placeholder="example@example.com"
+                                id="id"
+                                formControlName="id"/>
+                        </mat-form-field>
+                    </div>
+                    <a>Адресные данные</a>
+                    <div class="data">
+                        <mat-form-field appearance="fill">
+                            <mat-label>city</mat-label>
+                            <input type="text" 
+                                matInput  
+                                placeholder="Aktau"
+                                id="city"
+                                formControlName="city"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>street</mat-label>
+                            <input type="text" 
+                                matInput  
+                                placeholder="street"
+                                id="street"
+                                formControlName="street"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>House</mat-label>
+                            <input type="number" 
+                                matInput  
+                                placeholder="house"
+                                id="house"
+                                formControlName="house"
+                                [disabled]="true"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>flat</mat-label>
+                            <input type="number" 
+                                matInput  
+                                placeholder="10"
+                                id="flat"
+                                formControlName="flat"/>
+                        </mat-form-field> 
                 </div>
-                <a>Адресные данные</a>
-                <div class="data">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                <button mat-stroked-button
+                [disabled]="form.invalid || form.disabled">Отмена</button>
+                <div class="buttons">
+                    <button mat-stroked-button type="submit">Сохранить</button>
+                    <button mat-stroked-button (click)="clearForm()">Очистить</button>
                 </div>
-                <button mat-raised-button>Отмена</button>
-            </div>
-            <div class="buttons">
-                <button mat-stroked-button>Сохранить</button>
-                <button mat-stroked-button>Очистить</button>
+            </form>
             </div>
         </div>
         <mat-divider [vertical]="true"></mat-divider>
     </div>
     <div class="map">
         <div id="map" style="width:1450px; height:100%">
-            <button mat-raised-button>hfghfhgfhhfghfgh</button>
         </div>
     </div>
 </div>
