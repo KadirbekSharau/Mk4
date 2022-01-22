@@ -9,42 +9,42 @@
                     <a>Паспортные данные</a>
                     <div class="data">
                         <mat-form-field appearance="fill">
-                            <mat-label>surname</mat-label>
+                            <mat-label>First Name</mat-label>
                             <input type="text" 
                                 matInput  
                                 placeholder="example@example.com"
-                                id="surname"
-                                formControlName="surname"/>
+                                id="first"
+                                formControlName="first"/>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
-                            <mat-label>name</mat-label>
+                            <mat-label>Last Name</mat-label>
                             <input type="text" 
                                 matInput  
-                                placeholder="example@example.com"
-                                id="name"
-                                formControlName="name"/>
+                                placeholder="Your last name"
+                                id="last"
+                                formControlName="last"/>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
-                            <mat-label>fathername</mat-label>
+                            <mat-label>Middle Name</mat-label>
                             <input type="text" 
                                 matInput  
-                                placeholder="example@example.com"
-                                id="fathername"
-                                formControlName="fathername"/>
+                                placeholder="Your middle name"
+                                id="middle"
+                                formControlName="middle"/>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
-                            <mat-label>id</mat-label>
-                            <input type="number" 
+                            <mat-label>IIN</mat-label>
+                            <input type="text" 
                                 matInput  
-                                placeholder="example@example.com"
-                                id="id"
-                                formControlName="id"/>
+                                placeholder="IIN number"
+                                id="iin"
+                                formControlName="iin"/>
                         </mat-form-field>
                     </div>
                     <a>Адресные данные</a>
                     <div class="data">
                         <mat-form-field appearance="fill">
-                            <mat-label>city</mat-label>
+                            <mat-label>City</mat-label>
                             <input type="text" 
                                 matInput  
                                 placeholder="Aktau"
@@ -61,7 +61,7 @@
                         </mat-form-field>
                         <mat-form-field appearance="fill">
                             <mat-label>House</mat-label>
-                            <input type="number" 
+                            <input type="text" 
                                 matInput  
                                 placeholder="house"
                                 id="house"
@@ -69,19 +69,46 @@
                                 [disabled]="true"/>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
-                            <mat-label>flat</mat-label>
-                            <input type="number" 
+                            <mat-label>Apartment</mat-label>
+                            <input type="text" 
                                 matInput  
                                 placeholder="10"
-                                id="flat"
-                                formControlName="flat"/>
+                                id="apartment"
+                                formControlName="apartment"/>
                         </mat-form-field> 
                 </div>
+                <a>Дополнительные данные</a>
+                <div class="data">
+                    <mat-form-field appearance="fill">
+                        <mat-label>CAD</mat-label>
+                        <input type="text" 
+                            matInput  
+                            placeholder="CAD number"
+                            id="cad"
+                            formControlName="cad"/>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Area</mat-label>
+                        <input type="number" 
+                            matInput  
+                            placeholder="area"
+                            id="area"
+                            formControlName="area"/>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Additional information</mat-label>
+                        <input type="text" 
+                            matInput  
+                            placeholder="extra"
+                            id="extra"
+                            formControlName="extra"/>
+                    </mat-form-field> 
+            </div>
                 <button mat-stroked-button
                 [disabled]="form.invalid || form.disabled">Отмена</button>
                 <div class="buttons">
                     <button mat-stroked-button type="submit">Сохранить</button>
-                    <button mat-stroked-button (click)="clearForm()">Очистить</button>
+                    <button mat-stroked-button type="button" (click)="clearForm()">Очистить</button>
                 </div>
             </form>
             </div>

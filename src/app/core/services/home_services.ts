@@ -35,6 +35,13 @@ export class HomeServices {
           );
     }
 
+    updateForm(form: Form, id: string) {
+        return this.http.put<Form>(`${this.url}/forms/${id}`, form, this.httpOptions).pipe(
+            tap((form: Form) => this.log(`added form w/ id=${form.id}`)),
+            catchError(this.handleError<Form>('addHero'))
+          );
+    }
+
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

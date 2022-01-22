@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription, Observable } from 'rxjs';
 import { Form } from '../../components/interface/form.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 /* Forms page component */
 @Component({
@@ -24,7 +25,8 @@ export class FormsPage implements OnInit, OnDestroy {
   ];
   subscriptions: Subscription = new Subscription();
 
-  constructor(private formsService: FormService) {}
+  constructor(private formsService: FormService, private route: ActivatedRoute,
+    private router: Router  ) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Form>(this.tableData);
@@ -47,6 +49,10 @@ export class FormsPage implements OnInit, OnDestroy {
 
   deleteItem(item: Form) {
     console.log ("Deleted item: " + item.last + item.first + item.middle);
+  }
+
+  editItem(item: Form) {
+    this.router.navigate(['../'], { relativeTo: this.route, queryParams: {id: item.id} });
   }
 
   ngOnDestroy(): void {

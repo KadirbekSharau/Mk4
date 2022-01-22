@@ -70,6 +70,10 @@
                         (click)="deleteItem(row)">
                         <mat-icon>delete</mat-icon>
                     </button>
+                    <button fxHide.xs mat-flat-button style="color:#3f51b5;" matTooltip="Удалить"
+                    (click)="editItem(row)">
+                    <mat-icon>edit</mat-icon>
+                </button>
                     <!-- <app-row-actions-menu fxHide fxShow.lt-sm (editItem)="detailItem(row)"></app-row-actions-menu> -->
                 </td>
             </ng-container>
