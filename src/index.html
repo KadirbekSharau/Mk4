@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
       var map;
 
       DG.then(function () {
@@ -18,10 +18,10 @@
               center: [54.98, 82.89],
               zoom: 13
           });
-
+          map.on("click", ({ latlng }) => handleGetLocation(latlng));
           DG.marker([54.98, 82.89]).addTo(map).bindPopup('Вы кликнули по мне!');
       });
-  </script>
+  </script> -->
 </head>
 <body class="mat-typography">
   <app-component></app-component>
