@@ -1,0 +1,10 @@
+version: "2.3" # optional since v1.27.0
+services:
+  frontend: 
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+volumes:
+  csci_db_vol: null
