@@ -6,17 +6,6 @@ mat-toolbar {
     justify-content: space-between;
 }
 
-.search{
-    width: 400px;
-    height: 100%;
-    margin:7px;
-    font-size: small;
-    input {
-        height: 20px;
-        width: 400px;
-    }
-}
-
 button {
     color: white;
     background-color: green;
@@ -37,4 +26,9 @@ mat-divider {
 
 .buttons {
     display: flex;
+}
+
+.forms {
+    background-color: white;
+    color: black;
 }
