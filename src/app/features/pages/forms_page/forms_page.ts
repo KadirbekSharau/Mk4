@@ -45,6 +45,7 @@ export class FormsPage implements OnInit, OnDestroy {
 
   addNewItem() {
     console.log ("Add new item!");
+    this.router.navigate(['../']);
   }
 
   deleteItem(item: Form) {
