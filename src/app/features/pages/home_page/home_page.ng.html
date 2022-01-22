@@ -104,11 +104,9 @@
                             formControlName="extra"/>
                     </mat-form-field> 
             </div>
-                <button mat-stroked-button
-                [disabled]="form.invalid || form.disabled">Отмена</button>
                 <div class="buttons">
-                    <button mat-stroked-button type="submit">Сохранить</button>
-                    <button mat-stroked-button type="button" (click)="clearForm()">Очистить</button>
+                    <button class="trans-button" mat-stroked-button type="submit">Сохранить</button>
+                    <button class="trans-button" mat-stroked-button type="button" (click)="clearForm()">Очистить</button>
                 </div>
             </form>
             </div>
@@ -118,10 +116,10 @@
     <div class="map">
         <div id="map">
         </div>
-        <div id="confirm" [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}">
-            <button mat-raised-button color="primary" (click)="onConfirm()" *ngIf="!current.confirm">Confirm</button>
-            <button mat-raised-button color="primary" (click)="onReset()" *ngIf="current.confirm && current.coordinates.length > 0">Reset</button>
-            <button mat-raised-button color="primary" (click)="onCancel()" *ngIf="current.confirm">Cancel</button>
+        <div class="confirms" id="confirm" [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}">
+            <button class="trans-buttons" mat-raised-button (click)="onConfirm()" *ngIf="!current.confirm">Подтвердить</button>
+            <button class="trans-butto" mat-raised-button (click)="onReset()" *ngIf="current.confirm && current.coordinates.length > 0">Отменить <mat-icon>delete</mat-icon></button>
+            <button class="trans-butt" mat-raised-button (click)="onCancel()" *ngIf="current.confirm">Новая точка</button>
         </div>
     </div>
 </div>

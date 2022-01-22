@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MapsModule } from '@syncfusion/ej2-angular-maps';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MapsModule } from '@syncfusion/ej2-angular-maps';
     MatInputModule,
     ReactiveFormsModule,
     MatDividerModule,
+    MatIconModule
   ],
   exports: [HomePage],
   providers: [],
