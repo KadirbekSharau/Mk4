@@ -326,14 +326,14 @@ export class HomePage implements OnInit {
       this.services.updateForm(data, this.id).subscribe((forma) => {
         console.log(data);
         this.forms.push(forma);
+        if (forma) alert('Успешно обновили анкету!');
       });
-      alert('Успешно обновили анкету!');
     } else {
       this.services.postForm(data).subscribe((forma) => {
         console.log(data);
         this.forms.push(forma);
+        if (forma) alert('Успешно создали анкету!');
       });
-      alert('Успешно создали анкету!');
     }
   }
 
