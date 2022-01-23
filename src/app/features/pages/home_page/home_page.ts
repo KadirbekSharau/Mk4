@@ -96,7 +96,7 @@ export class HomePage implements OnInit {
     if (cad) {
       this.services.getAddressByCad(cad).subscribe((data) => {
         if (!data) {
-          alert('Не правильный кадровый номер ' + cad);
+          alert('Не правильный кадастровый номер ' + cad);
           return;
         }
         const { area, location } = data;
@@ -104,7 +104,7 @@ export class HomePage implements OnInit {
         this.services.getMapPointByAddress(location).subscribe((res) => {
           if (!res) {
             alert(
-              'Не смогли автоматически заполнить данные по кадровому номеру ' +
+              'Не смогли автоматически заполнить данные по кадарстровому номеру ' +
                 cad
             );
             return;
@@ -327,11 +327,13 @@ export class HomePage implements OnInit {
         console.log(data);
         this.forms.push(forma);
       });
+      alert("Успешно обновили анкету!")
     } else {
       this.services.postForm(data).subscribe((forma) => {
         console.log(data);
         this.forms.push(forma);
       });
+      alert("Успешно создали анкету!")
     }
   }
 
