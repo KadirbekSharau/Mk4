@@ -28,6 +28,22 @@ export class HomeServices {
         );
     }
 
+    getMapPointByAddress(geocode: string) {
+        const urll = `${this.url}/maps/raw?geocode=${geocode}`;
+        return this.http.get<GetLocationInfo>(urll).pipe(
+          tap(_ => this.log(`fetched hotel name=${geocode}`)),
+          catchError(this.handleError<GetLocationInfo>(`getHotel id=${geocode}`))
+        );
+    }
+
+    getAddressByCad(cad: string) {
+        const urll = `${this.url}/maps/info-by-cad?cad=${cad}`;
+        return this.http.get<{location: string, area: number}>(urll).pipe(
+          tap(_ => this.log(`fetched hotel name=${cad}`)),
+          catchError(this.handleError<{location: string, area: number}>(`getHotel id=${cad}`))
+        );
+    }
+
     postForm(form: Form) {
         return this.http.post<Form>(`${this.url}/forms`, form, this.httpOptions).pipe(
             tap((form: Form) => this.log(`added form w/ id=${form.id}`)),

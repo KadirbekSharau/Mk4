@@ -4,6 +4,7 @@ import { HomeServices } from 'src/app/core/services/home_services';
 import {
   AddressInfo,
   Form,
+  GetLocationInfo,
   Location,
   PointAddress,
 } from 'src/app/core/interfaces';
@@ -86,6 +87,33 @@ export class HomePage implements OnInit {
     } catch (err) {}
   }
 
+  getCadFromQueryParams() {
+    const cad = this.route.snapshot.queryParamMap.get('cad') || null;
+    if (cad) {
+      this.services.getAddressByCad(cad).subscribe(({ area, location }) => {
+        this.services
+          .getMapPointByAddress(location)
+          .subscribe(({ pos, address }) => {
+            if (this.current?.marker) this.current.marker.removeFrom(this.map);
+            const point = this.formatPoint(pos);
+            const marker = DG.marker(point)
+              .addTo(this.map)
+              .bindPopup('Выберите границу');
+            this.current = {
+              address,
+              marker,
+              coordinates: [],
+              polyline: null,
+              confirm: false,
+            };
+            this.map.setView(point, 17);
+            this.form.patchValue({ area, cad });
+            this.updateFormByAddress(point);
+          });
+      });
+    }
+  }
+
   async initGoogle() {
     const key = 'AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk';
     const loader = new Loader(key, { libraries: ['geometry'] });
@@ -129,6 +157,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  setMarker({ pos, address }: GetLocationInfo) {}
   onConfirm() {
     this.current.confirm = true;
     this.current.marker?.openPopup();
@@ -237,6 +266,7 @@ export class HomePage implements OnInit {
       });
       this.map.on('click', (res: any) => this.handleGetLocation(res.latlng));
       this.getPointFromQueryParams();
+      this.getCadFromQueryParams();
     });
   }
 
