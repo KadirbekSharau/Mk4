@@ -6,7 +6,7 @@
                 <form class="authorization-form"
                       [formGroup]="form"
                       (ngSubmit) = "onSubmit()">
-                    <a>Паспортные данные</a>
+                    <a class="header">Паспортные данные</a>
                     <div class="data">
                         <mat-form-field appearance="fill">
                             <mat-label>Имя</mat-label>
@@ -41,7 +41,7 @@
                                 formControlName="iin"/>
                         </mat-form-field>
                     </div>
-                    <a>Адресные данные</a>
+                    <a class="header">Адресные данные</a>
                     <div class="data">
                         <mat-form-field appearance="fill">
                             <mat-label>Город</mat-label>
@@ -77,7 +77,7 @@
                                 formControlName="apartment"/>
                         </mat-form-field> 
                 </div>
-                <a>Дополнительные данные</a>
+                <a class="header">Дополнительные данные</a>
                 <div class="data">
                     <mat-form-field appearance="fill">
                         <mat-label>Кадастровый номер</mat-label>
@@ -105,7 +105,7 @@
                     </mat-form-field> 
             </div>
                 <div class="buttons">
-                    <button class="trans-button" mat-stroked-button type="submit">Сохранить</button>
+                    <button class="button-custom trans-buttons" mat-stroked-button type="submit">Сохранить</button>
                     <button class="trans-button" mat-stroked-button type="button" (click)="clearForm()">Очистить</button>
                 </div>
             </form>
