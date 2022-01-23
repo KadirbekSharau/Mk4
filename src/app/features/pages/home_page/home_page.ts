@@ -90,28 +90,38 @@ export class HomePage implements OnInit {
   getCadFromQueryParams() {
     const cad = this.route.snapshot.queryParamMap.get('cad') || null;
     if (cad) {
-      this.services.getAddressByCad(cad).subscribe(({ area, location }) => {
-        this.services
-          .getMapPointByAddress(location)
-          .subscribe((res) => {
-            if(!res) alert("Не смогли автоматически заполнить данные по кадровому номеру "+cad)
-            const {pos, address} =res
-            if (this.current?.marker) this.current.marker.removeFrom(this.map);
-            const point = this.formatPoint(pos);
-            const marker = DG.marker(point, {title: 'Выберите границу'})
-              .addTo(this.map)
-              .bindPopup('Выберите границу');
-            this.current = {
-              address,
-              marker,
-              coordinates: [],
-              polyline: null,
-              confirm: false,
-            };
-            this.map.setView(point, 17);
-            this.form.patchValue({ area, cad });
-            this.updateFormByAddress(point);
-          });
+      this.services.getAddressByCad(cad).subscribe((data) => {
+        if (!data) {
+          alert('Не правильный кадровый номер ' + cad);
+          return;
+        }
+        const { area, location } = data;
+
+        this.services.getMapPointByAddress(location).subscribe((res) => {
+          if (!res) {
+            alert(
+              'Не смогли автоматически заполнить данные по кадровому номеру ' +
+                cad
+            );
+            return;
+          }
+          const { pos, address } = res;
+          if (this.current?.marker) this.current.marker.removeFrom(this.map);
+          const point = this.formatPoint(pos);
+          const marker = DG.marker(point, { title: 'Выберите границу' })
+            .addTo(this.map)
+            .bindPopup('Выберите границу');
+          this.current = {
+            address,
+            marker,
+            coordinates: [],
+            polyline: null,
+            confirm: false,
+          };
+          this.map.setView(point, 17);
+          this.form.patchValue({ area, cad });
+          this.updateFormByAddress(point);
+        });
       });
     }
   }
@@ -139,7 +149,7 @@ export class HomePage implements OnInit {
                 this.current.marker.removeFrom(this.map);
 
               //set current pick
-              const marker = DG.marker(point, {title: 'Выберите границу'})
+              const marker = DG.marker(point, { title: 'Выберите границу' })
                 .addTo(this.map)
                 .bindPopup('Выберите границу');
               this.current = {
@@ -161,7 +171,7 @@ export class HomePage implements OnInit {
 
   onConfirm() {
     this.current.confirm = true;
-    alert("Укажите границы на карте")
+    alert('Укажите границы на карте');
   }
 
   onReset() {
