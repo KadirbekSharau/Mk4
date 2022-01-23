@@ -87,8 +87,8 @@ export class HomePage implements OnInit {
     } catch (err) {}
   }
 
-  focusOutFunction(){
-    this.getCadFromQueryParams(this.form.value.cad)
+  findCad() {
+    this.getCadFromQueryParams(this.form.value.cad);
   }
 
   getCadFromQueryParams(cadNum?: string) {
@@ -327,13 +327,13 @@ export class HomePage implements OnInit {
         console.log(data);
         this.forms.push(forma);
       });
-      alert("Успешно обновили анкету!")
+      alert('Успешно обновили анкету!');
     } else {
       this.services.postForm(data).subscribe((forma) => {
         console.log(data);
         this.forms.push(forma);
       });
-      alert("Успешно создали анкету!")
+      alert('Успешно создали анкету!');
     }
   }
 

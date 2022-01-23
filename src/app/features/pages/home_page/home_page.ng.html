@@ -1,129 +1,199 @@
 <header></header>
 <div class="content">
-    <div class="contents">
-        <div class="forms">
-            <div>
-                <form class="authorization-form"
-                      [formGroup]="form"
-                      (ngSubmit) = "onSubmit()">
-                    <a class="header">Паспортные данные</a>
-                    <div class="data">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Имя</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="Иван"
-                                id="first"
-                                formControlName="first"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Фамилия</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="Иванов"
-                                id="last"
-                                formControlName="last"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Отчество</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="Иваныч"
-                                id="middle"
-                                formControlName="middle"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>ИИН</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="010101555555"
-                                id="iin"
-                                formControlName="iin"/>
-                        </mat-form-field>
-                    </div>
-                    <a class="header">Адресные данные</a>
-                    <div class="data">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Город</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="Актау"
-                                id="city"
-                                formControlName="city"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Улица</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="Абая"
-                                id="street"
-                                formControlName="street"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Дом</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="68"
-                                id="house"
-                                formControlName="house"
-                                [disabled]="true"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Квартира</mat-label>
-                            <input type="text" 
-                                matInput  
-                                placeholder="10"
-                                id="apartment"
-                                formControlName="apartment"/>
-                        </mat-form-field> 
-                </div>
-                <a class="header">Дополнительные данные</a>
-                <div class="data">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Кадастровый номер</mat-label>
-                        <input type="text" 
-                            matInput  
-                            placeholder="123123123"
-                            id="cad"
-                            formControlName="cad"
-                            (focusout)="focusOutFunction()"/>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Площадь в кв.м.</mat-label>
-                        <input type="number" 
-                            matInput  
-                            placeholder="650"
-                            id="area"
-                            formControlName="area"/>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Дополнительная информация</mat-label>
-                        <input type="text" 
-                            matInput  
-                            placeholder="Дополнительная информация"
-                            id="extra"
-                            formControlName="extra"/>
-                    </mat-form-field> 
-            </div>
-                <div class="buttons">
-                    <button class="button-custom trans-buttons" mat-stroked-button type="submit">Сохранить</button>
-                    <button class="trans-button" mat-stroked-button type="button" (click)="clearForm()">Очистить</button>
-                </div>
-            </form>
-            </div>
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
+  <div class="contents">
+    <div class="forms">
+      <div>
+        <form
+          class="authorization-form"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+        >
+          <a class="header">Паспортные данные</a>
+          <div class="data">
+            <mat-form-field appearance="fill">
+              <mat-label>Имя</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Иван"
+                id="first"
+                formControlName="first"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Фамилия</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Иванов"
+                id="last"
+                formControlName="last"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Отчество</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Иваныч"
+                id="middle"
+                formControlName="middle"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>ИИН</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="010101555555"
+                id="iin"
+                formControlName="iin"
+              />
+            </mat-form-field>
+          </div>
+          <a class="header">Адресные данные</a>
+          <div class="data">
+            <mat-form-field appearance="fill">
+              <mat-label>Город</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Актау"
+                id="city"
+                formControlName="city"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Улица</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Абая"
+                id="street"
+                formControlName="street"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Дом</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="68"
+                id="house"
+                formControlName="house"
+                [disabled]="true"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Квартира</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="10"
+                id="apartment"
+                formControlName="apartment"
+              />
+            </mat-form-field>
+          </div>
+          <a class="header">Дополнительные данные</a>
+          <div class="data">
+            <mat-form-field appearance="fill">
+              <mat-label>Кадастровый номер</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="123123123"
+                id="cad"
+                formControlName="cad"
+              />
+            </mat-form-field>
+            <button
+              class="trans-button"
+              mat-raised-button
+              type="button"
+              [disabled]="this.form.value.cad == null"
+              (click)="findCad()"
+              style="margin-bottom: 5px; background-color: #3d4ead; color: white;"
+            >
+              Найти по кадастровому номеру
+            </button>
+            <mat-form-field appearance="fill">
+              <mat-label>Площадь в кв.м.</mat-label>
+              <input
+                type="number"
+                matInput
+                placeholder="650"
+                id="area"
+                formControlName="area"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Дополнительная информация</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Дополнительная информация"
+                id="extra"
+                formControlName="extra"
+              />
+            </mat-form-field>
+          </div>
+          <div class="buttons">
+            <button
+              class="button-custom trans-buttons"
+              mat-stroked-button
+              type="submit"
+            >
+              Сохранить
+            </button>
+            <button
+              class="trans-button"
+              mat-stroked-button
+              type="button"
+              (click)="clearForm()"
+            >
+              Очистить
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="map">
-        <div id="map">
-        </div>
-        <div class="confirms" id="confirm" [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}">
-            <h3 style="width: 100%">{{current.address?.formatted}}</h3>
-            <div class="button-container">
-                <button class="button-custom trans-butt" mat-raised-button (click)="onConfirm()" *ngIf="current.marker&&!current.confirm">Указать границу <mat-icon class="white-icon">border_style</mat-icon></button>
-                <button class="button-custom trans-butto" mat-raised-button (click)="onReset()" *ngIf="current.confirm && current.coordinates.length > 0">Отменить <mat-icon class="white-icon">delete</mat-icon></button>
-                <button class="button-custom trans-butt" mat-raised-button (click)="onCancel()" *ngIf="current.confirm">Новая точка <mat-icon class="white-icon">cached</mat-icon></button>
-            </div>
-        </div>
+    <mat-divider [vertical]="true"></mat-divider>
+  </div>
+  <div class="map">
+    <div id="map"></div>
+    <div
+      class="confirms"
+      id="confirm"
+      [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}"
+    >
+      <h3 style="width: 100%">{{current.address?.formatted}}</h3>
+      <div class="button-container">
+        <button
+          class="button-custom trans-butt"
+          mat-raised-button
+          (click)="onConfirm()"
+          *ngIf="current.marker&&!current.confirm"
+        >
+          Указать границу <mat-icon class="white-icon">border_style</mat-icon>
+        </button>
+        <button
+          class="button-custom trans-butto"
+          mat-raised-button
+          (click)="onReset()"
+          *ngIf="current.confirm && current.coordinates.length > 0"
+        >
+          Отменить <mat-icon class="white-icon">delete</mat-icon>
+        </button>
+        <button
+          class="button-custom trans-butt"
+          mat-raised-button
+          (click)="onCancel()"
+          *ngIf="current.confirm"
+        >
+          Новая точка <mat-icon class="white-icon">cached</mat-icon>
+        </button>
+      </div>
     </div>
+  </div>
 </div>
