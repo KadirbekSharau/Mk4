@@ -93,10 +93,12 @@ export class HomePage implements OnInit {
       this.services.getAddressByCad(cad).subscribe(({ area, location }) => {
         this.services
           .getMapPointByAddress(location)
-          .subscribe(({ pos, address }) => {
+          .subscribe((res) => {
+            if(!res) alert("Не смогли автоматически заполнить данные по кадровому номеру "+cad)
+            const {pos, address} =res
             if (this.current?.marker) this.current.marker.removeFrom(this.map);
             const point = this.formatPoint(pos);
-            const marker = DG.marker(point)
+            const marker = DG.marker(point, {title: 'Выберите границу'})
               .addTo(this.map)
               .bindPopup('Выберите границу');
             this.current = {
@@ -137,7 +139,7 @@ export class HomePage implements OnInit {
                 this.current.marker.removeFrom(this.map);
 
               //set current pick
-              const marker = DG.marker(point)
+              const marker = DG.marker(point, {title: 'Выберите границу'})
                 .addTo(this.map)
                 .bindPopup('Выберите границу');
               this.current = {
@@ -157,10 +159,9 @@ export class HomePage implements OnInit {
     }
   }
 
-  setMarker({ pos, address }: GetLocationInfo) {}
   onConfirm() {
     this.current.confirm = true;
-    this.current.marker?.openPopup();
+    alert("Укажите границы на карте")
   }
 
   onReset() {

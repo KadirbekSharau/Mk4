@@ -119,7 +119,7 @@
         <div class="confirms" id="confirm" [ngStyle]="{'transform': (current.marker) ? 'translateY(0)': 'translateY(100%)'}">
             <h3 style="width: 100%">{{current.address?.formatted}}</h3>
             <div class="button-container">
-                <button class="button-custom trans-buttons" mat-raised-button (click)="onConfirm()" *ngIf="current.marker&&!current.confirm">Подтвердить <mat-icon class="white-icon">done</mat-icon></button>
+                <button class="button-custom trans-butt" mat-raised-button (click)="onConfirm()" *ngIf="current.marker&&!current.confirm">Указать границу <mat-icon class="white-icon">border_style</mat-icon></button>
                 <button class="button-custom trans-butto" mat-raised-button (click)="onReset()" *ngIf="current.confirm && current.coordinates.length > 0">Отменить <mat-icon class="white-icon">delete</mat-icon></button>
                 <button class="button-custom trans-butt" mat-raised-button (click)="onCancel()" *ngIf="current.confirm">Новая точка <mat-icon class="white-icon">cached</mat-icon></button>
             </div>
