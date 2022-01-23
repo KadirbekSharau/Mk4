@@ -87,8 +87,12 @@ export class HomePage implements OnInit {
     } catch (err) {}
   }
 
-  getCadFromQueryParams() {
-    const cad = this.route.snapshot.queryParamMap.get('cad') || null;
+  focusOutFunction(){
+    this.getCadFromQueryParams(this.form.value.cad)
+  }
+
+  getCadFromQueryParams(cadNum?: string) {
+    const cad = cadNum || this.route.snapshot.queryParamMap.get('cad') || null;
     if (cad) {
       this.services.getAddressByCad(cad).subscribe((data) => {
         if (!data) {
